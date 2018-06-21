@@ -5,6 +5,9 @@
 #include <vector>
 #include <string>
 
+using std::istream;
+using std::ostream;
+
 namespace adrd{
 	
 	class Pixel {
@@ -14,14 +17,19 @@ namespace adrd{
 		int blue;
 	public:
 		Pixel();
+		Pixel(int red_, int green_, int blue_);
 		~Pixel();
+
+		void setRed(int red_);
+		void setGreen(int green_);
+		void setBlue(int blue_);
 
 		friend istream& operator>>(istream& in, Pixel p);
 		friend ostream& operator<<(ostream& in, Pixel p);
 	};
 
 	class Image {
-	private:
+	protected:
 		std::string name;
 		unsigned largura;
 		unsigned altura;
@@ -34,8 +42,8 @@ namespace adrd{
 		virtual void read() = 0;
 		virtual void print() = 0;
 
-		friend istream& operator>>(istream& in, Image i);
-		friend ostream& operator<<(ostream& in, Image i);
+		friend istream& operator>>(istream& in, Image& i);
+		friend ostream& operator<<(ostream& out, Image& i);
 	};
 
 } // adrd
