@@ -5,8 +5,11 @@ LIB_DIR = ./lib
 BIN_DIR = ./bin
 
 CC = g++
-CPP_FLAGS = -Wall -pedantic -std=c++11 -I$(INC_DIR)
+CPP_FLAGS = -Wall -pedantic -std=c++11 -I$(INC_DIR) -g
 AR = ar
 
 all:
 	$(CC) $(CPP_FLAGS) -o $(BIN_DIR)/BasicImageEdit $(SRC_DIR)/*
+
+dir:
+	mkdir bin build doc lib

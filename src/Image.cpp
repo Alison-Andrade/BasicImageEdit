@@ -5,7 +5,7 @@ namespace adrd {
 	Pixel::Pixel()
 	{}
 
-	Pixel::Pixel(int red_, int green_, int blue_): red(red_), green(green), blue(blue_)
+	Pixel::Pixel(int red_, int green_, int blue_): red(red_), green(green_), blue(blue_)
 	{}
 
 	Pixel::~Pixel()

@@ -15,7 +15,9 @@ namespace adrd {
 	PPMImage::read(){
 		std::ifstream in;
 
-		if(!in.open(this->name)) {
+		in.open(this->name);
+
+		if(!in.is_open()) {
 			std::cerr << "Erro: arquivo não pode ser aberto." << std::endl;
 			exit(1);
 		}
@@ -27,12 +29,24 @@ namespace adrd {
 
 		while(!in.eof()){
 
-			int* buffer = new int;
+			int red_, green_, blue_;
 
-			Pixel* p = new Pixel(in.read(buffer, sizeof(int)), in.read(buffer, sizeof(int)), in.read(buffer, sizeof(int)));
+			in >> red_;
+			in >> green_;
+			in >> blue_;
+
+			Pixel p(red_, green_, blue_);
 
 			this->data.push_back(p);
 		}
+
+		for (auto i = this->data.begin(); i < this->data.end(); i++){
+			std::cout << i->red << std::endl;
+			std::cout << i->green << std::endl;
+			std::cout << i->blue << std::endl;
+		}
+
+		in.close();
 
 	}
 
