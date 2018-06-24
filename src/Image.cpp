@@ -26,6 +26,35 @@ namespace adrd {
 		this->blue =blue_;
 	}
 
+	int
+	Pixel::getRed(){
+		return red;
+	}
+
+	int
+	Pixel::getGreen(){
+		return green;
+	}
+
+	int
+	Pixel::getBlue(){
+		return blue;
+	}
+
+	istream& operator>>(istream& in, Pixel& p){
+		
+		in >> p.red >> p.green >> p.blue;
+
+		return in;
+	}
+
+	ostream& operator<<(ostream& out, Pixel& p){
+
+		out << p.red << " " << p.green << " " << p.blue;
+
+		return out;
+	}
+
 	Image::Image(){
 		name = "";
 	}

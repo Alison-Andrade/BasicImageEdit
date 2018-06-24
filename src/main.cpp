@@ -11,5 +11,7 @@ int main(int argc, char const *argv[]){
 
 	std::cin >> test;
 
+	std::cout << test;
+
 	return 0;
 }

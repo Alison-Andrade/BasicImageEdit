@@ -29,21 +29,13 @@ namespace adrd {
 
 		while(!in.eof()){
 
-			int red_, green_, blue_;
+			//int red_, green_, blue_;
 
-			in >> red_;
-			in >> green_;
-			in >> blue_;
+			Pixel p;
 
-			Pixel p(red_, green_, blue_);
+			in >> p;
 
 			this->data.push_back(p);
-		}
-
-		for (auto i = this->data.begin(); i < this->data.end(); i++){
-			std::cout << i->red << std::endl;
-			std::cout << i->green << std::endl;
-			std::cout << i->blue << std::endl;
 		}
 
 		in.close();
@@ -52,7 +44,22 @@ namespace adrd {
 
 	void
 	PPMImage::print(){
+		std::ofstream out;
 
+		out.open("out.ppm");
+
+		if(!out.is_open()) {
+			std::cerr << "Erro: arquivo não pode ser aberto." << std::endl;
+			exit(1);
+		}
+
+		out << this->type << std:: endl;
+		out << this->largura << " " << this->altura << std::endl;
+		out << this->max << std::endl;
+
+		for (auto i = this->data.begin(); i < this->data.end(); i++){
+			out << *i << std::endl;
+		}
 	}
 
 } // adrd

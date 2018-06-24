@@ -5,11 +5,13 @@
 #include <vector>
 #include <string>
 
+//#include "Pixel.h"
+
 using std::istream;
 using std::ostream;
 
 namespace adrd{
-	
+
 	class Pixel {
 	private:
 		int red;
@@ -20,12 +22,18 @@ namespace adrd{
 		Pixel(int red_, int green_, int blue_);
 		~Pixel();
 
+		//Setters
 		void setRed(int red_);
 		void setGreen(int green_);
 		void setBlue(int blue_);
 
-		friend istream& operator>>(istream& in, Pixel p);
-		friend ostream& operator<<(ostream& in, Pixel p);
+		//Getters
+		int getRed();
+		int getGreen();
+		int getBlue();
+
+		friend istream& operator>>(istream& in, Pixel& p);
+		friend ostream& operator<<(ostream& in, Pixel& p);
 	};
 
 	class Image {
