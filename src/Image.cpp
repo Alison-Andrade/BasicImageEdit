@@ -43,14 +43,18 @@ namespace adrd {
 
 	istream& operator>>(istream& in, Pixel& p){
 		
-		in >> p.red >> p.green >> p.blue;
+		in.read(reinterpret_cast<char *>(&p.red), sizeof(p.red));
+		in.read(reinterpret_cast<char *>(&p.green), sizeof(p.green));
+		in.read(reinterpret_cast<char *>(&p.blue), sizeof(p.blue));
 
 		return in;
 	}
 
 	ostream& operator<<(ostream& out, Pixel& p){
 
-		out << p.red << " " << p.green << " " << p.blue;
+		out.write(reinterpret_cast<char *>(&p.red), sizeof(p.red));
+		out.write(reinterpret_cast<char *>(&p.green), sizeof(p.green));
+		out.write(reinterpret_cast<char *>(&p.blue), sizeof(p.blue));
 
 		return out;
 	}
@@ -65,14 +69,24 @@ namespace adrd {
 	Image::~Image()
 	{}
 
+	int
+	Image::getLargura(){
+		return this->largura;
+	}
+
+	int
+	Image::getAltura(){
+		return this->altura;
+	}
+
 	istream& operator>>(istream& in, Image& i){
-		i.read();
+		i.read(in);
 
 		return in;
 	}
 
 	ostream& operator<<(ostream& out, Image& i){
-		i.print();
+		i.print(out);
 
 		return out;
 	}

@@ -5,8 +5,6 @@
 #include <vector>
 #include <string>
 
-//#include "Pixel.h"
-
 using std::istream;
 using std::ostream;
 
@@ -37,18 +35,24 @@ namespace adrd{
 	};
 
 	class Image {
+	private:
+
 	protected:
 		std::string name;
 		unsigned largura;
 		unsigned altura;
 		std::vector<Pixel> data;
+
+		virtual void read(istream& in) = 0;
+		virtual void print(ostream& out) = 0;
 	public:
 		Image();
 		Image(std::string name_);
 		~Image();
 
-		virtual void read() = 0;
-		virtual void print() = 0;
+		//Getters
+		int getLargura();
+		int getAltura();
 
 		friend istream& operator>>(istream& in, Image& i);
 		friend ostream& operator<<(ostream& out, Image& i);

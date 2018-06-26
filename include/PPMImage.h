@@ -11,13 +11,13 @@ namespace adrd {
 	private:
 		char type[2];
 		int max;
+
+		void read(std::istream& in);
+		void print(std::ostream& out);
 	public:
 		PPMImage();
 		PPMImage(std::string name_);
 		~PPMImage();
-
-		void read();
-		void print();
 	};
 
 } // adrd
