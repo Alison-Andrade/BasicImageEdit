@@ -46,15 +46,31 @@ int main(int argc, char const *argv[]){
 	std::ifstream in(inName, std::ios::binary);
 	char magicNumber[2];
 	in.read(reinterpret_cast<char*>(&magicNumber), sizeof(magicNumber));
-	std::cout << magicNumber << std::endl;
 	in.close();
 
 	if(magicNumber == magicNumbers[0] || magicNumber == magicNumbers[1]) {
 		adrd::PPMImage inImage(inName);
+		in.open(inName, std::ios::binary);
 		in >> inImage;
+		in.close();
+
+		std::ofstream out(outName, std::ios::binary);
+
+		out << inImage;
+
+		out.close();
+
 	}else if(magicNumber == magicNumbers[2]) {
 		adrd::BMPImage inImage(inName);
+		in.open(inName, std::ios::binary);
 		in >> inImage;
+		in.close();
+
+		std::ofstream out(outName, std::ios::binary);
+
+		out << inImage;
+
+		out.close();
 	}else {
 		std::cerr << "Formato desconhecido." << std::endl;
 		exit(1);

@@ -48,6 +48,7 @@ namespace adrd{
 	public:
 		Image();
 		Image(std::string name_);
+		Image(const Image& im);
 		~Image();
 
 		//Getters

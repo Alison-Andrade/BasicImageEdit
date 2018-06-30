@@ -66,8 +66,16 @@ namespace adrd {
 	Image::Image(std::string name_): name(name_)
 	{}
 
-	Image::~Image()
-	{}
+	Image::Image(const Image& im){
+		this->name = im.name;
+		this->largura = im.largura;
+		this->altura = im.altura;
+		this->data = im.data;
+	}
+
+	Image::~Image(){
+		
+	}
 
 	int
 	Image::getLargura(){
